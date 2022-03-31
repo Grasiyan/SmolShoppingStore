@@ -36,3 +36,43 @@
     transform: rotate(360deg);
   }
 }
+
+.marginright{
+  margin-right: 5px ;
+}
+
+.marginleft{
+  margin-left: 10%;
+}
+
+.marginbottom{
+  margin-bottom: 5px;
+}
+
+.borderbottom{
+  border-bottom: 1px solid black;
+  padding-bottom: 20px;
+}
+
+.margintop{
+  margin-top: 7px;
+}
+
+.highertopmargin{
+  margin-top: 45px;
+}
+
+.imagesize{
+  width: 112px;
+  height: 112px;
+}
+
+.marginleftpx{
+  margin-left: 25px;
+}
+
+.fixposition{
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}

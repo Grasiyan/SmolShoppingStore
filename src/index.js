@@ -3,11 +3,22 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from './Pages/Layout';
+import NoPage from './Pages/NoPage';
+import Home from './Pages/Home';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<Layout />}>
+        <Route index element={<Home />} />
+      </Route>
+      <Route path='*' element={<NoPage />} />
+
+    </Routes>
+
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
