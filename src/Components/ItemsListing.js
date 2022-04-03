@@ -9,40 +9,44 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import ListGroup from 'react-bootstrap/ListGroup';
 
-const ItemsListing = () => {
+const ItemsListing = ({ items, handleAddtoCart, counter, addItem }) => {
     return (
         <>
-            <ListGroup.Item>
-                <Row>
-                    <Col xs={4}>
-                        <img src='https://rukminim1.flixcart.com/image/150/150/k6tniq80/air-cooler/w/z/k/platini-coolest-torque-px-97-bajaj-original-imafp7akmpnvrzt6.jpeg?q=70' className='imagesize'></img>
-                    </Col>
-                    <Col xs={4}><b> Big cooler thingie white for cold air</b>
-                    </Col>
-                    <Col xs={4}> price here
-                    </Col>
+            {items.map((items) => {
+                return (
+                    <ListGroup.Item>
+                        <Row>
+                            <Col xs={4}>
+                                <img className='imagesize' src={items.image}></img>
+                            </Col>
+                            <Col xs={4}><a visibility="false ">{items.id}</a><b> {items.title}</b>
+                            </Col>
+                            <Col xs={4}> ${items.price}
+                            </Col>
 
-                </Row>
+                        </Row>
 
-                <Row>
-                    <Col xs={4}></Col>
-                    <Col> asgvduasvdgasv ahsvduasvdguasvduasvbgdu asvdguasvbdguasvbdgvu asdva hudvasudvasguvdasguvdguasvdguvasud uasvdasuvdgasvd asvbdasguvbdsd auyvsdguasvd guasvdguasv uvasgudvas gudvasugdv agusvdugasvdugasvdug avduasvdu a</Col>
-                </Row>
+                        <Row>
+                            <Col xs={4}></Col>
+                            <Col> {items.description}</Col>
+                        </Row>
 
-                <br />
-                <Row><Col>
-                    <Button variant="primary">-</Button>
-                    <span> 0 </span>
-                    <Button variant="primary">+</Button>
-                    <Button className='marginleftpx' variant="danger">Remove</Button>
-                </Col>
-                </Row>
-                <br />
-                <Row>
-                    <Col xs={4} className="marginleft">
-                        <Button variant="warning">Add to Cart</Button>
-                    </Col>
-                </Row></ListGroup.Item>
+                        <br />
+                        <Row><Col>
+                            <Button variant="primary">-</Button>
+                            <span> 0 </span>
+                            <Button variant="primary" onClick={addItem}>+</Button>
+                            <Button className='marginleftpx' variant="danger" >Remove</Button>
+                        </Col>
+                        </Row>
+                        <br />
+                        <Row>
+                            <Col xs={4} >
+                                <Button variant="warning" onClick={() => { handleAddtoCart(items) }}>Add to Cart</Button>
+                            </Col>
+                        </Row></ListGroup.Item>
+                )
+            })}
         </>
     )
 }
