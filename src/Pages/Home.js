@@ -22,22 +22,27 @@ const Home = () => {
     }
 
     const removeItems = (item) => {
-        // cart.splice(items.id, 1)
         const cloneCart = [...cart]
-
         const indexToDelete = cloneCart.findIndex((product) => {
-
             return product.id == item.id;
         })
         cloneCart.splice(indexToDelete, 1)
         setCart(cloneCart)
-        console.log("something", cloneCart)
     }
 
-    const handleAddtoCart = (item) => {
-        setCart([...cart, item])
+    const handleAddToCart = (item, counter) => {
+        const isItemPresentIndex = cart.findIndex((cartItem) => cartItem.id == item.id);
+        if (isItemPresentIndex > -1) {
+            const cloneCart = [...cart];
+            cloneCart[isItemPresentIndex].counter = cloneCart[isItemPresentIndex].counter + 1
+            setCart(cloneCart)
+        } else {
+            setCart([...cart, { ...item, counter }])
+        }
 
     }
+
+
     console.log(cart)
 
     useEffect(() => {
@@ -58,7 +63,7 @@ const Home = () => {
                         <Card >
                             <ListGroup variant="flush">
                                 <ListGroup.Item><b>My Cart</b></ListGroup.Item>
-                                <ItemsListing items={items} handleAddtoCart={handleAddtoCart} counter={counter} removeItems={removeItems} />
+                                <ItemsListing items={items} handleAddToCart={handleAddToCart} counter={counter} removeItems={removeItems} />
                             </ListGroup>
                         </Card>
 

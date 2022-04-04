@@ -36,7 +36,7 @@ const TotalCalculator = ({ cart }) => {
                                 </Card.Text>
                             </Col>
                             <Col xs={5}>
-                                <Card.Text> {cost}
+                                <Card.Text> {parseFloat(cost).toFixed(2)}
                                 </Card.Text>
                             </Col>
                         </Row >
@@ -68,7 +68,7 @@ const TotalCalculator = ({ cart }) => {
                                 </Card.Text>
                             </Col>
                             <Col xs={5}>
-                                <Card.Text><b> item.total</b>
+                                <Card.Text><b> {parseFloat(cost).toFixed(2)}</b>
                                 </Card.Text>
                             </Col>
                         </Row>
