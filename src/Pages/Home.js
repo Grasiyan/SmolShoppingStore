@@ -18,12 +18,24 @@ const Home = () => {
     const [cart, setCart] = useState([])
 
     const addItem = () => {
-        setCounter = (counter + 1);
+
     }
 
+    const removeItems = (item) => {
+        // cart.splice(items.id, 1)
+        const cloneCart = [...cart]
 
-    const handleAddtoCart = (items) => {
-        setCart([...cart, items])
+        const indexToDelete = cloneCart.findIndex((product) => {
+
+            return product.id == item.id;
+        })
+        cloneCart.splice(indexToDelete, 1)
+        setCart(cloneCart)
+        console.log("something", cloneCart)
+    }
+
+    const handleAddtoCart = (item) => {
+        setCart([...cart, item])
 
     }
     console.log(cart)
@@ -46,7 +58,7 @@ const Home = () => {
                         <Card >
                             <ListGroup variant="flush">
                                 <ListGroup.Item><b>My Cart</b></ListGroup.Item>
-                                <ItemsListing items={items} handleAddtoCart={handleAddtoCart} counter={counter} />
+                                <ItemsListing items={items} handleAddtoCart={handleAddtoCart} counter={counter} removeItems={removeItems} />
                             </ListGroup>
                         </Card>
 
