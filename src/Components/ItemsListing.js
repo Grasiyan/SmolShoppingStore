@@ -9,15 +9,14 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import ListGroup from 'react-bootstrap/ListGroup';
 
-const ItemsListing = ({ items, handleAddToCart, counter, addItem, removeItems }) => {
+const ItemsListing = ({ items, }) => {
     return (
         <>
             {items.map((item) => {
                 return (
                     <ItemComponent
                         item={item}
-                        removeItems={removeItems}
-                        handleAddToCart={handleAddToCart}
+
                     />
                 )
             })}
@@ -26,32 +25,7 @@ const ItemsListing = ({ items, handleAddToCart, counter, addItem, removeItems })
 }
 
 
-const ItemComponent = ({ item, handleAddToCart, removeItems }) => {
-
-    const [counter, setCounter] = useState(0);
-
-    // const handleIncrementCounter = () => {
-    //     console.log('In');
-    //     setCounter((prev) => prev + 1)
-    // }
-
-    const handleRemoveItem = (item) => {
-        setCounter(0);
-        removeItems(item);
-    }
-
-    const handleDecrementCounter = () => {
-        const counterValue = counter - 1
-        setCounter(counterValue);
-        // handleUpdateProductCounter();
-    }
-
-    const handleAddItem = (item) => {
-        const counterValue = counter + 1
-        setCounter(counterValue)
-        handleAddToCart(item, counterValue)
-    }
-
+const ItemComponent = ({ item, }) => {
 
     return <ListGroup.Item>
         <Row>
@@ -68,17 +42,12 @@ const ItemComponent = ({ item, handleAddToCart, removeItems }) => {
             <Col> {item.description}</Col>
         </Row>
         <br />
-        <Row><Col>
-            <Button variant="primary" onClick={handleDecrementCounter}>-</Button>
-            <span> {counter}</span>
-            <Button variant="primary" onClick={() => { handleAddItem(item) }}>+</Button>
-            <Button className='marginleftpx' variant="danger" onClick={() => { handleRemoveItem(item) }} >Remove</Button>
-        </Col>
-        </Row>
-        <br />
         <Row>
-            <Col xs={4} >
-                <Button variant="warning" onClick={() => { handleAddItem(item) }}>Add to Cart</Button>
+            <Col xs={3}>
+                <Button variant="warning">Add</Button>
+            </Col>
+            <Col xs={3}>
+                <Button className='marginleftpx' variant="danger">Remove</Button>
             </Col>
         </Row>
     </ListGroup.Item>
